@@ -10,7 +10,9 @@ CREATED BY: INTELLIGENT OFFICE Setup System
 TARGET: Windows 10 / Windows 11 | 16 GB RAM | No GPU required
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 WHAT IS INTELLIGENT OFFICE?
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 INTELLIGENT OFFICE is a complete, self-contained AI workspace that runs 100%
