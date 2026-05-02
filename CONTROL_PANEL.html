@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INTELLIGENT OFFICE — Control Panel</title>
+<style>
+  :root {
+    --bg: #0d0f1a;
+    --card: #141726;
+    --card2: #1a1f35;
+    --border: #2a3050;
+    --blue: #2e5ead;
+    --blue-light: #4a7fd4;
+    --cyan: #00d4ff;
+    --green: #00e676;
+    --orange: #ff6600;
+    --red: #ff3d57;
+    --yellow: #ffd600;
+    --text: #e0e6ff;
+    --text-dim: #7a8ab0;
+    --accent: #5c6bc0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0a0f20 0%, #141e3c 50%, #0d1525 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .logo-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+
+  .logo-text h1 {
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--cyan), var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+  }
+
+  .logo-text p {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .header-status {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .status-pill {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid;
+  }
+
+  .status-pill.checking { border-color: var(--yellow); color: var(--yellow); background: rgba(255,214,0,0.08); }
+  .status-pill.ok       { border-color: var(--green);  color: var(--green);  background: rgba(0,230,118,0.08); }
+  .status-pill.down     { border-color: var(--red);    color: var(--red);    background: rgba(255,61,87,0.08); }
+
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* ── Main layout ── */
+  .main { padding: 32px 40px; max-width: 1400px; margin: 0 auto; }
+
+  /* ── Grid ── */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 28px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 28px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after { content:''; flex:1; height:1px; background: var(--border); }
+
+  /* ── Service card ── */
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .service-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--card-accent, var(--blue));
+  }
+
+  .service-card .card-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .service-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .service-card p {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .service-card .card-status {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .card-status.running { color: var(--green); background: rgba(0,230,118,0.12); }
+  .card-status.stopped { color: var(--red); background: rgba(255,61,87,0.12); }
+  .card-status.checking { color: var(--yellow); background: rgba(255,214,0,0.12); }
+
+  /* ── Action button ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: transparent;
+  }
+
+  .btn-primary {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: rgba(0, 212, 255, 0.06);
+  }
+  .btn-primary:hover { background: rgba(0, 212, 255, 0.15); box-shadow: 0 0 20px rgba(0,212,255,0.2); }
+
+  .btn-green {
+    border-color: var(--green);
+    color: var(--green);
+    background: rgba(0, 230, 118, 0.06);
+  }
+  .btn-green:hover { background: rgba(0, 230, 118, 0.15); }
+
+  .btn-orange {
+    border-color: var(--orange);
+    color: var(--orange);
+    background: rgba(255, 102, 0, 0.06);
+  }
+  .btn-orange:hover { background: rgba(255, 102, 0, 0.15); }
+
+  .btn-red {
+    border-color: var(--red);
+    color: var(--red);
+    background: rgba(255, 61, 87, 0.06);
+  }
+  .btn-red:hover { background: rgba(255, 61, 87, 0.15); }
+
+  /* ── Action grid ── */
+  .action-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .action-card:hover {
+    border-color: var(--card-hover, var(--accent));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+  .action-card .icon { font-size: 32px; margin-bottom: 8px; }
+  .action-card h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .action-card p  { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+
+  /* ── Info panel ── */
+  .info-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+  .info-panel h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--cyan); }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .label { color: var(--text-dim); }
+  .info-row .value { color: var(--text); font-weight: 600; }
+  .info-row .value.good  { color: var(--green); }
+  .info-row .value.warn  { color: var(--yellow); }
+  .info-row .value.bad   { color: var(--red); }
+
+  /* ── Log viewer ── */
+  .log-box {
+    background: #08090f;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    color: #7a8ab0;
+    height: 160px;
+    overflow-y: auto;
+    line-height: 1.6;
+  }
+  .log-box .log-ok   { color: var(--green); }
+  .log-box .log-warn { color: var(--yellow); }
+  .log-box .log-err  { color: var(--red); }
+  .log-box .log-info { color: var(--cyan); }
+
+  /* ── Perf meter ── */
+  .perf-bar-wrap { margin: 8px 0; }
+  .perf-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+  .perf-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .perf-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+
+  /* ── Pipeline diagram ── */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 28px;
+  }
+  .pipe-node {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .pipe-node .node-icon { font-size: 20px; margin-bottom: 4px; }
+  .pipe-node .node-label { color: var(--text-dim); font-size: 10px; }
+  .pipe-arrow {
+    color: var(--text-dim);
+    font-size: 18px;
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-dim);
+    font-size: 11px;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .main { padding: 20px; }
+  }
+  @media (max-width: 600px) {
+    .grid-3, .grid-4, .grid-2 { grid-template-columns: 1fr; }
+    .header { padding: 16px 20px; flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">🧠</div>
+    <div class="logo-text">
+      <h1>INTELLIGENT OFFICE</h1>
+      <p>Offline AI Workspace • Windows 10/11 • 16 GB RAM</p>
+    </div>
+  </div>
+  <div class="header-status">
+    <div class="status-pill checking" id="ollama-pill">
+      <div class="dot"></div> Ollama: Checking...
+    </div>
+    <div class="status-pill checking" id="allm-pill">
+      <div class="dot"></div> AnythingLLM: Checking...
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- ── Services ── -->
+  <div class="section-label">🔧 AI Services Status</div>
+  <div class="grid-3" style="margin-bottom:28px">
+
+    <div class="service-card" style="--card-accent:#00d4ff">
+      <div class="card-icon">🧠</div>
+      <h3>Ollama Engine</h3>
+      <p>Runs the Qwen 2.5 7B AI model locally. Core of the entire system.</p>
+      <span class="card-status checking" id="ollama-status">● Checking...</span>
+      <div style="margin-top:12px">
+        <a href="http://localhost:11434" target="_blank" class="btn btn-primary" style="font-size:11px;padding:6px 12px">
+          → API Port 11434
+        </a>
+      </div>
+    </div>
+
+    <div class="service-card" style="--card-accent:#00e676">
+      <div class="card-icon">💬</div>
+      <h3>AnythingLLM</h3>
+      <p>Chat interface. Upload documents, ask questions, RAG search.</p>
+      <span class="card-status checking" id="allm-status">● Checking...</span>
+      <div style="margin-top:12px">
+        <a href="http://localhost:3001" target="_blank" class="btn btn-green" style="font-size:11px;padding:6px 12px">
+          → Open Chat UI
+        </a>
+      </div>
+    </div>
+
+    <div class="service-card" style="--card-accent:#ff6600">
+      <div class="card-icon">🛡️</div>
+      <h3>Watchdog</h3>
+      <p>Auto-restarts crashed services. Runs silently in background.</p>
+      <span class="card-status running" id="watchdog-status">● Monitoring</span>
+      <div style="margin-top:12px; font-size:11px; color:var(--text-dim)">
+        Checks every 30 seconds
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Data Pipeline ── -->
+  <div class="section-label">🔗 Data Flow Pipeline</div>
+  <div class="pipeline">
+    <div class="pipe-node">
+      <div class="node-icon">📄</div>
+      <div>PDF/DOCX</div>
+      <div class="node-label">Office Docs</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node">
+      <div class="node-icon">🔍</div>
+      <div>OCR / Parse</div>
+      <div class="node-label">Umi-OCR / PyMuPDF</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node">
+      <div class="node-icon">🎙️</div>
+      <div>Audio/Video</div>
+      <div class="node-label">Whisper + FFmpeg</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node">
+      <div class="node-icon">✂️</div>
+      <div>Chunking</div>
+      <div class="node-label">800-char chunks</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node">
+      <div class="node-icon">🔢</div>
+      <div>Embedding</div>
+      <div class="node-label">Nomic-Embed</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node">
+      <div class="node-icon">🗄️</div>
+      <div>Vector DB</div>
+      <div class="node-label">ChromaDB / LanceDB</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node">
+      <div class="node-icon">🧠</div>
+      <div>Qwen 2.5</div>
+      <div class="node-label">Answer generation</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-node">
+      <div class="node-icon">📊</div>
+      <div>Output</div>
+      <div class="node-label">DOCX / PPTX / XLSX</div>
+    </div>
+  </div>
+
+  <!-- ── Quick Actions ── -->
+  <div class="section-label">⚡ Quick Actions (open relevant .bat file)</div>
+  <div class="grid-4">
+
+    <div class="action-card" style="--card-hover:#00e676" onclick="openDoc('generate_report.bat')">
+      <div class="icon">📝</div>
+      <h4>Generate Report</h4>
+      <p>AI-written DOCX report on any topic</p>
+    </div>
+
+    <div class="action-card" style="--card-hover:#2e5ead" onclick="openDoc('generate_ppt.bat')">
+      <div class="icon">📊</div>
+      <h4>Generate PPT</h4>
+      <p>Professional PowerPoint presentation</p>
+    </div>
+
+    <div class="action-card" style="--card-hover:#ff6600" onclick="openDoc('generate_excel.bat')">
+      <div class="icon">📈</div>
+      <h4>Generate Excel</h4>
+      <p>Data table + bar and line charts</p>
+    </div>
+
+    <div class="action-card" style="--card-hover:#00d4ff" onclick="openDoc('generate_chart.bat')">
+      <div class="icon">🎨</div>
+      <h4>Generate Chart</h4>
+      <p>Bar, Line, Pie, 3D, Dashboard</p>
+    </div>
+
+    <div class="action-card" style="--card-hover:#ffd600" onclick="openDoc('transcribe_audio.bat')">
+      <div class="icon">🎙️</div>
+      <h4>Transcribe Audio</h4>
+      <p>MP3/WAV/MP4 → Text via Whisper</p>
+    </div>
+
+    <div class="action-card" style="--card-hover:#ab47bc" onclick="openDoc('ocr_image.bat')">
+      <div class="icon">🖼️</div>
+      <h4>OCR Image/PDF</h4>
+      <p>Extract text from images and scanned PDFs</p>
+    </div>
+
+    <div class="action-card" style="--card-hover:#26c6da" onclick="openDoc('ingest_documents.bat')">
+      <div class="icon">📚</div>
+      <h4>Ingest Documents</h4>
+      <p>Load docs into AI knowledge base</p>
+    </div>
+
+    <div class="action-card" style="--card-hover:#ef5350" onclick="openDoc('diagnose.bat')">
+      <div class="icon">🩺</div>
+      <h4>Run Diagnosis</h4>
+      <p>Check all services and components</p>
+    </div>
+
+  </div>
+
+  <!-- ── Performance Info ── -->
+  <div class="grid-2">
+    <div class="info-panel">
+      <h2>📊 System Information</h2>
+      <div class="info-row">
+        <span class="label">AI Model</span>
+        <span class="value good">Qwen 2.5 7B (Q4_K_M)</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Embedding Model</span>
+        <span class="value good">Nomic Embed Text</span>
+      </div>
+      <div class="info-row">
+        <span class="label">RAM Required</span>
+        <span class="value warn">~6-8 GB for Qwen 7B</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Inference Speed</span>
+        <span class="value warn">3-8 tokens/sec (CPU only)</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Context Window</span>
+        <span class="value good">4,096 tokens</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Vector Store</span>
+        <span class="value good">ChromaDB + LanceDB (offline)</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Internet Required</span>
+        <span class="value good">❌ None — 100% Offline</span>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <h2>⏱️ Speed Expectations (CPU, 16 GB RAM)</h2>
+      <div class="perf-bar-wrap">
+        <div class="perf-label"><span>Chat / Q&A</span><span style="color:var(--green)">3-8 tok/s ⭐⭐⭐⭐</span></div>
+        <div class="perf-bar"><div class="perf-fill" style="width:80%;background:var(--green)"></div></div>
+      </div>
+      <div class="perf-bar-wrap">
+        <div class="perf-label"><span>Document Summary</span><span style="color:var(--green)">Good ⭐⭐⭐⭐</span></div>
+        <div class="perf-bar"><div class="perf-fill" style="width:78%;background:var(--green)"></div></div>
+      </div>
+      <div class="perf-bar-wrap">
+        <div class="perf-label"><span>DOCX Report</span><span style="color:var(--yellow)">~60s ⭐⭐⭐⭐</span></div>
+        <div class="perf-bar"><div class="perf-fill" style="width:70%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="perf-bar-wrap">
+        <div class="perf-label"><span>PowerPoint (10 slides)</span><span style="color:var(--yellow)">~90s ⭐⭐⭐</span></div>
+        <div class="perf-bar"><div class="perf-fill" style="width:60%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="perf-bar-wrap">
+        <div class="perf-label"><span>Audio Transcription</span><span style="color:var(--green)">1-3x realtime ⭐⭐⭐⭐</span></div>
+        <div class="perf-bar"><div class="perf-fill" style="width:75%;background:var(--green)"></div></div>
+      </div>
+      <div class="perf-bar-wrap">
+        <div class="perf-label"><span>OCR (image/PDF)</span><span style="color:var(--green)">Fast ⭐⭐⭐⭐</span></div>
+        <div class="perf-bar"><div class="perf-fill" style="width:85%;background:var(--green)"></div></div>
+      </div>
+      <div style="margin-top:12px; font-size:11px; color:var(--text-dim)">
+        💡 For faster AI: switch to qwen2.5:3b in config (edit config/intelligent_office.conf)
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Service Control ── -->
+  <div class="section-label">🎛️ Service Control</div>
+  <div class="info-panel">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-green" onclick="runBat('start_all.bat')">▶ Start All Services</button>
+      <button class="btn btn-red" onclick="runBat('stop_all.bat')">⏹ Stop All Services</button>
+      <button class="btn btn-orange" onclick="runBat('restart_all.bat')">↺ Restart All</button>
+      <button class="btn btn-primary" onclick="runBat('diagnose.bat')">🩺 Diagnose</button>
+      <button class="btn btn-orange" onclick="runBat('fix_errors.bat')">🔧 Fix Errors</button>
+      <button class="btn btn-red" onclick="runBat('crash_recovery.bat')">🚨 Crash Recovery</button>
+      <a href="http://localhost:3001" target="_blank" class="btn btn-primary">💬 Open AnythingLLM →</a>
+    </div>
+    <div style="margin-top:16px;padding:12px;background:#08090f;border-radius:8px;font-size:11px;color:var(--text-dim)">
+      ℹ️  Buttons above show Windows dialogs to open the .bat files.
+      You can also double-click any .bat file from File Explorer.
+    </div>
+  </div>
+
+  <!-- ── Log area ── -->
+  <div class="section-label">📋 System Log (simulated)</div>
+  <div class="log-box" id="log-box">
+    <div class="log-info">[INTELLIGENT OFFICE] Control Panel loaded</div>
+    <div class="log-ok">[OK] Dashboard initialized</div>
+    <div class="log-info">[INFO] Checking service status...</div>
+  </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+  INTELLIGENT OFFICE v1.0  •  Offline AI Workspace  •  Windows 10/11  •
+  Qwen 2.5 7B + AnythingLLM + Whisper + Nomic Embed  •  100% Private
+</div>
+
+<script>
+  // ── Service status checking ────────────────────────────────────────────────
+  function log(msg, type='info') {
+    const box = document.getElementById('log-box');
+    const div = document.createElement('div');
+    const time = new Date().toTimeString().slice(0,8);
+    div.className = 'log-' + type;
+    div.textContent = `[${time}] ${msg}`;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+  }
+
+  function setStatus(id, pillId, status) {
+    const statusEl = document.getElementById(id);
+    const pillEl = document.getElementById(pillId);
+    if (!statusEl || !pillEl) return;
+
+    statusEl.className = 'card-status ' + status;
+    pillEl.className = 'status-pill ' + (status === 'running' ? 'ok' : status === 'stopped' ? 'down' : 'checking');
+
+    const labels = {
+      'running': '● Running',
+      'stopped': '● Stopped',
+      'checking': '● Checking...'
+    };
+    statusEl.textContent = labels[status] || status;
+
+    const names = { 'ollama-status': 'Ollama', 'allm-status': 'AnythingLLM' };
+    const name = names[id] || id;
+
+    if (pillEl.id === 'ollama-pill') {
+      pillEl.innerHTML = `<div class="dot"></div> Ollama: ${status === 'running' ? 'Running ✓' : status === 'stopped' ? 'OFFLINE' : 'Checking...'}`;
+    } else {
+      pillEl.innerHTML = `<div class="dot"></div> AnythingLLM: ${status === 'running' ? 'Running ✓' : status === 'stopped' ? 'OFFLINE' : 'Checking...'}`;
+    }
+  }
+
+  async function checkOllama() {
+    try {
+      const ctrl = new AbortController();
+      const timeout = setTimeout(() => ctrl.abort(), 4000);
+      const resp = await fetch('http://localhost:11434/api/tags', { signal: ctrl.signal });
+      clearTimeout(timeout);
+      if (resp.ok) {
+        setStatus('ollama-status', 'ollama-pill', 'running');
+        log('[OK] Ollama engine is running on port 11434', 'ok');
+        // Check models
+        const data = await resp.json();
+        const models = data.models || [];
+        const qwen = models.find(m => m.name && m.name.includes('qwen'));
+        const nomic = models.find(m => m.name && m.name.includes('nomic'));
+        if (qwen) log(`[OK] Qwen model loaded: ${qwen.name}`, 'ok');
+        else log('[WARN] Qwen model not found - run: ollama pull qwen2.5:7b', 'warn');
+        if (nomic) log(`[OK] Nomic embed loaded: ${nomic.name}`, 'ok');
+        else log('[WARN] Nomic embed not found - run: ollama pull nomic-embed-text', 'warn');
+        return true;
+      }
+    } catch(e) {}
+    setStatus('ollama-status', 'ollama-pill', 'stopped');
+    log('[ERR] Ollama not running - run start_all.bat', 'err');
+    return false;
+  }
+
+  async function checkAnythingLLM() {
+    try {
+      const ctrl = new AbortController();
+      const timeout = setTimeout(() => ctrl.abort(), 5000);
+      const resp = await fetch('http://localhost:3001', { signal: ctrl.signal, mode: 'no-cors' });
+      clearTimeout(timeout);
+      setStatus('allm-status', 'allm-pill', 'running');
+      log('[OK] AnythingLLM is running on port 3001', 'ok');
+      return true;
+    } catch(e) {}
+    setStatus('allm-status', 'allm-pill', 'stopped');
+    log('[WARN] AnythingLLM may not be running - run start_all.bat', 'warn');
+    return false;
+  }
+
+  function openDoc(batName) {
+    log(`[INFO] To run ${batName}: double-click it in File Explorer`, 'info');
+    alert(`To run ${batName}:\n\n1. Go to your INTELLIGENT_OFFICE folder\n2. Double-click "${batName}"\n\nOr press Win+R and type the full path.`);
+  }
+
+  function runBat(batName) {
+    openDoc(batName);
+  }
+
+  // ── Init ──────────────────────────────────────────────────────────────────
+  async function init() {
+    log('[INFO] INTELLIGENT OFFICE Control Panel v1.0', 'info');
+    log('[INFO] Checking all services...', 'info');
+    await checkOllama();
+    await checkAnythingLLM();
+    log('[INFO] Status check complete', 'info');
+  }
+
+  window.addEventListener('load', init);
+
+  // Re-check every 60 seconds
+  setInterval(() => {
+    checkOllama();
+    checkAnythingLLM();
+  }, 60000);
+</script>
+</body>
+</html>

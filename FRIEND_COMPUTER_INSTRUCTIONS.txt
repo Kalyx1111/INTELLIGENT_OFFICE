@@ -1,0 +1,123 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║         INTELLIGENT OFFICE — FOR YOUR FRIEND'S COMPUTER             ║
+║         (Simple instructions — no coding knowledge needed)          ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Hello! Your friend has set up an AI system for you called
+INTELLIGENT OFFICE. It works 100% without internet.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FIRST TIME SETUP (do this only once)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Copy this entire INTELLIGENT_OFFICE folder to your
+   Desktop or C:\INTELLIGENT_OFFICE
+
+2. Open the INTELLIGENT_OFFICE folder
+
+3. Double-click:  02_INSTALL_HERE.bat
+
+4. Wait for it to finish (5-15 minutes)
+   → Say YES to any permission questions
+   → Do NOT close the black window until it says "DONE"
+
+5. Setup is complete!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EVERY DAY: HOW TO START THE AI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Double-click:  start_all.bat
+   (Wait 30-60 seconds for everything to load)
+
+2. Your browser will open automatically to the AI chat
+
+3. Start chatting! Type your questions.
+
+4. When finished for the day:  double-click  stop_all.bat
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT CAN THIS AI DO?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💬 CHAT WITH AI
+   → Just type questions in the browser chat
+   → Ask anything! It knows a lot.
+
+📄 CHAT WITH YOUR DOCUMENTS
+   → Upload a PDF, Word file, or Excel in the chat
+   → Ask questions about it
+   → Example: "Summarize this report"
+   → Example: "What are the key numbers in this file?"
+
+📝 CREATE A WORD REPORT
+   → Double-click:  generate_report.bat
+   → Type your topic
+   → AI writes a professional report for you!
+
+📊 CREATE A POWERPOINT
+   → Double-click:  generate_ppt.bat
+   → Type your topic
+   → AI creates slides automatically!
+
+📈 CREATE AN EXCEL FILE
+   → Double-click:  generate_excel.bat
+   → Type your topic
+   → AI creates a spreadsheet with charts!
+
+🎙️ CONVERT AUDIO TO TEXT
+   → Put your audio file in:  input_docs\audio\
+   → Double-click:  transcribe_audio.bat
+   → Text file appears in:  output_docs\reports\
+
+🖼️ EXTRACT TEXT FROM IMAGE
+   → Put image in:  input_docs\images\
+   → Double-click:  ocr_image.bat
+   → Text appears in:  output_docs\reports\
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SOMETHING NOT WORKING?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Double-click  diagnose.bat  (tells you what's wrong)
+Step 2: Double-click  fix_errors.bat  (auto-fixes most problems)
+Step 3: Double-click  crash_recovery.bat  (if nothing else works)
+Step 4: Call your friend who set this up! :)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIPS FOR BEST EXPERIENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✔ Close other programs when using AI (it needs RAM)
+✔ First response takes 30-60 seconds — this is NORMAL
+✔ After that, responses come in 5-20 seconds
+✔ The AI does NOT need internet — it works offline!
+✔ Your files and conversations are PRIVATE
+✔ Generated files appear in the output_docs folder
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BAT FILE GUIDE (what each file does)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  02_INSTALL_HERE.bat    → Run ONCE to install everything
+  start_all.bat          → Start the AI (run this daily)
+  stop_all.bat           → Stop the AI when done
+  restart_all.bat        → Restart if something froze
+  diagnose.bat           → Check what's working
+  fix_errors.bat         → Fix common problems
+  crash_recovery.bat     → Emergency fix
+  generate_report.bat    → Create Word document
+  generate_ppt.bat       → Create PowerPoint
+  generate_excel.bat     → Create Excel spreadsheet
+  generate_chart.bat     → Create charts/graphs
+  transcribe_audio.bat   → Audio/video to text
+  ocr_image.bat          → Image/PDF to text
+  ingest_documents.bat   → Add files to AI memory
+  open_control_panel.bat → Open visual dashboard
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Enjoy your private, offline AI assistant!
+No subscriptions. No internet. No data sharing.
+
+╚══════════════════════════════════════════════════════╝
