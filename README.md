@@ -1,7 +1,8 @@
 
 
 ╔═════════════════════════════════════════════════════════╗
-║             INTELLIGENT OFFICE  v1.0                    ║
+║                                                         ║
+║              INTELLIGENT OFFICE  v1.0                    ║
 ║      Fully Offline AI Workspace for Windows 10/11       ║
 ║ Built for: CPU-only | 16 GB RAM | Air-Gapped Compatible ║
 ╚═════════════════════════════════════════════════════════╝
