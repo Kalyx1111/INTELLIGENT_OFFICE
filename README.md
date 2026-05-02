@@ -9,9 +9,9 @@
 CREATED BY: INTELLIGENT OFFICE Setup System
 TARGET: Windows 10 / Windows 11 | 16 GB RAM | No GPU required
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 WHAT IS INTELLIGENT OFFICE?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 INTELLIGENT OFFICE is a complete, self-contained AI workspace that runs 100%
 offline on any Windows 10/11 machine. It combines:
@@ -25,31 +25,31 @@ offline on any Windows 10/11 machine. It combines:
   📊 Python Scripts    → Generates PPT, DOCX, XLSX, Charts automatically
   🔍 FFmpeg            → Processes audio/video files before Whisper
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 QUICK START (Internet Computer - YOUR computer)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   STEP 1: Run  01_DOWNLOAD_ALL.bat   (downloads everything - takes 1-3 hours)
   STEP 2: Run  02_INSTALL_HERE.bat   (installs on your own machine)
   STEP 3: Run  start_all.bat         (starts INTELLIGENT OFFICE)
   STEP 4: Open browser → http://localhost:3001
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SHARING WITH FRIEND (Air-Gapped / No Internet Computer)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SHARING (Air-Gapped / No Internet Computer)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   STEP 1: On YOUR computer, run  01_DOWNLOAD_ALL.bat  (one time)
   STEP 2: Copy this entire INTELLIGENT_OFFICE folder to a USB drive
   STEP 3: On FRIEND'S computer, paste folder and run  02_INSTALL_HERE.bat
-  STEP 4: Run  start_all.bat  on friend's computer
+  STEP 4: Run  start_all.bat  on other computer
   STEP 5: Open browser → http://localhost:3001
 
   ⚠️  IMPORTANT: The folder will be ~15-20 GB after download.
       Use a USB 3.0 drive or external SSD for fast transfer.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ALL BAT FILES EXPLAINED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   01_DOWNLOAD_ALL.bat     → Downloads all software (needs internet, run once)
   02_INSTALL_HERE.bat     → Installs everything (works offline after download)
@@ -65,9 +65,9 @@ ALL BAT FILES EXPLAINED
   transcribe_audio.bat    → Convert audio file to text
   ocr_image.bat           → Extract text from image/PDF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 HONEST PERFORMANCE EXPECTATIONS (16 GB RAM, CPU Only)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   TASK                    SPEED           QUALITY
   ─────────────────────────────────────────────────
@@ -88,9 +88,9 @@ HONEST PERFORMANCE EXPECTATIONS (16 GB RAM, CPU Only)
   - 3D chart rendering via Plotly: excellent quality offline
   - Close Chrome/Firefox/heavy apps before using for best speed
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FOLDER STRUCTURE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   INTELLIGENT_OFFICE/
   ├── 📁 ollama/              → Ollama runtime (AI model server)
@@ -120,9 +120,9 @@ FOLDER STRUCTURE
   ├── 📁 config/              → Configuration files
   └── 📁 watchdog/            → Auto-restart scripts
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SUPPORT & TROUBLESHOOTING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   1. First run diagnose.bat to identify the problem
   2. Then run fix_errors.bat to auto-fix
