@@ -28,7 +28,9 @@ offline on any Windows 10/11 machine. It combines:
   🔍 FFmpeg            → Processes audio/video files before Whisper
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 QUICK START (Internet Computer - YOUR computer)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   STEP 1: Run  01_DOWNLOAD_ALL.bat   (downloads everything - takes 1-3 hours)
@@ -37,7 +39,9 @@ QUICK START (Internet Computer - YOUR computer)
   STEP 4: Open browser → http://localhost:3001
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 SHARING (Air-Gapped / No Internet Computer)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   STEP 1: On YOUR computer, run  01_DOWNLOAD_ALL.bat  (one time)
@@ -50,7 +54,9 @@ SHARING (Air-Gapped / No Internet Computer)
       Use a USB 3.0 drive or external SSD for fast transfer.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 ALL BAT FILES EXPLAINED
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   01_DOWNLOAD_ALL.bat     → Downloads all software (needs internet, run once)
@@ -68,7 +74,9 @@ ALL BAT FILES EXPLAINED
   ocr_image.bat           → Extract text from image/PDF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 HONEST PERFORMANCE EXPECTATIONS (16 GB RAM, CPU Only)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   TASK                    SPEED           QUALITY
@@ -91,7 +99,9 @@ HONEST PERFORMANCE EXPECTATIONS (16 GB RAM, CPU Only)
   - Close Chrome/Firefox/heavy apps before using for best speed
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 FOLDER STRUCTURE
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   INTELLIGENT_OFFICE/
@@ -123,7 +133,9 @@ FOLDER STRUCTURE
   └── 📁 watchdog/            → Auto-restart scripts
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 SUPPORT & TROUBLESHOOTING
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   1. First run diagnose.bat to identify the problem
