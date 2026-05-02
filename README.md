@@ -1,10 +1,10 @@
 
 
-╔═══════════════════════════════════════════════════════════════╗
-║                INTELLIGENT OFFICE  v1.0                       ║
-║         Fully Offline AI Workspace for Windows 10/11          ║
-║    Built for: CPU-only | 16 GB RAM | Air-Gapped Compatible    ║
-╚═══════════════════════════════════════════════════════════════╝
+╔═════════════════════════════════════════════════════════╗
+║             INTELLIGENT OFFICE  v1.0                    ║
+║      Fully Offline AI Workspace for Windows 10/11       ║
+║ Built for: CPU-only | 16 GB RAM | Air-Gapped Compatible ║
+╚═════════════════════════════════════════════════════════╝
 
 CREATED BY: INTELLIGENT OFFICE Setup System
 TARGET: Windows 10 / Windows 11 | 16 GB RAM | No GPU required
